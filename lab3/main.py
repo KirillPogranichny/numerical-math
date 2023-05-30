@@ -31,14 +31,11 @@ class Solution:
         self.y = np.linalg.tensorsolve(self.u.T, self.b)
         return np.linalg.tensorsolve(self.u, self.y)
 
+    def display_u_matrix(self):
+        print(f"Матрица U:\n{self.u}")
+
     def display_solution(self):
         print(f"Решение системы:\n{self.get_solution()}\n")
-
-    def display_u_matrix(self):
-        print(f"Матрица U:\n{self.u}\n")
-
-    def check_a_matrix(self):
-        print(f"Матрица A:\n{np.matmul(self.u, self.u.T)}\n\n")
 
 
 if __name__ == "__main__":
@@ -49,10 +46,10 @@ if __name__ == "__main__":
     ])
     b_1 = np.array([3.1, 1.7, 1.1])
 
+    print("---Первая СЛАУ---")
     sol_1 = Solution(a_1, b_1)
-    sol_1.display_solution()
     sol_1.display_u_matrix()
-    sol_1.check_a_matrix()
+    sol_1.display_solution()
 
     a_2 = np.array([
         [4.12, 0.42, 1.34, 0.88],
@@ -62,7 +59,7 @@ if __name__ == "__main__":
     ])
     b_2 = np.array([11.17, 0.115, 9.909, 9.349])
 
+    print("---Вторая СЛАУ---")
     sol_2 = Solution(a_2, b_2)
-    sol_2.display_solution()
     sol_2.display_u_matrix()
-    sol_2.check_a_matrix()
+    sol_2.display_solution()
