@@ -15,6 +15,7 @@ def qr_decomposition(A):
         sum = 0
 
         if k > 0:
+            sum = 0
             for j in range(k-1):
                 sum += proj(A.transpose()[k], U[j])
 
@@ -28,14 +29,14 @@ def qr_decomposition(A):
 
     Q = C.T
 
-    return Q, R, U
+    return Q, R
 
 
 def get_solution(A, b):
-    Q, R, U = qr_decomposition(A)
+    Q, R = qr_decomposition(A)
     y = np.linalg.tensorsolve(Q, b)
 
-    return np.linalg.tensorsolve(U, y)
+    return np.linalg.tensorsolve(R, y)
 
 
 if __name__ == "__main__":
@@ -46,5 +47,6 @@ if __name__ == "__main__":
     ])
     b = np.array([3, 0, 3])
 
-    Q, R, U = qr_decomposition(A)
+    Q, R = qr_decomposition(A)
     print("Решение системы:\n", get_solution(A, b))
+    print("\nТочное решение:\n", np.linalg.tensorsolve(A, b))
