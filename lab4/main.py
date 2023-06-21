@@ -48,5 +48,6 @@ if __name__ == "__main__":
     b = np.array([3, 0, 3])
 
     Q, R = qr_decomposition(A)
+    print(f"Матрица Q:\n{Q}")
+    print(f"Матрица R:\n{R}")
     print("Решение системы:\n", get_solution(A, b))
-    print("\nТочное решение:\n", np.linalg.tensorsolve(A, b))

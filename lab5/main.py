@@ -45,7 +45,7 @@ class Jacobi:
         return x_next, iterator
 
 
-class Zeidel:
+class Seidel:
     def __init__(self, a: np.array, b: np.array, eps: float):
         self.a = a
         self.b = b
@@ -85,8 +85,7 @@ if __name__ == "__main__":
     ])
     b = np.array([10, 8, 9])
 
-    print("\nТочное решение:\n", np.linalg.tensorsolve(A, b))
     print("\n---Метод Якоби---")
-    print(Jacobi(A, b, 1e-3).get_solution()[0])
+    print(Jacobi(A, b, 1e-10).get_solution()[0])
     print("\n---Метод Зейделя---")
-    print(Zeidel(A, b, 1e-3).get_solution()[0])
+    print(Seidel(A, b, 1e-10).get_solution()[0])
