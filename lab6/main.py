@@ -1,5 +1,9 @@
 import math
 import numpy as np
+import warnings
+
+
+warnings.simplefilter(action="ignore", category=RuntimeWarning)
 
 
 def relaxation(_A, _b, _x_start):
@@ -47,12 +51,12 @@ def richardson(_A, _b, _x_start):
 
 if __name__ == "__main__":
     A = np.array([
-        [4, -1, -6, 0],
-        [-5, -4, 10, 8],
-        [0, 9, 4, -2],
-        [1, 0, -7, 5]
+        [8, -1, -6, 0],
+        [-5, 24, 10, 8],
+        [0, 9, 12, -2],
+        [1, 0, -7, 9]
     ])
-    b = np.array([2, 21, -12, -6])
+    b = np.array([2, 10, 5, 1])
 
     print(np.linalg.eigvals(A))
     x_start = np.array([0.00, 0.00, 0.00, 0.00])
